@@ -1,0 +1,9 @@
+{
+  "name": "@goldn/notification",
+  "version": "0.0.0",
+  "main": "./index.ts",
+  "sideEffects": false,
+  "dependencies": {
+    "pusher-js": "7.0.3"
+  }
+}

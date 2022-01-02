@@ -1,0 +1,41 @@
+{
+  "name": "@goldn/blog-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start:dev": "next build && next start",
+    "dev": "next dev",
+    "build": "next build && next export",
+    "build:staging": "STAGE=staging next build && next export",
+    "build:production": "STAGE=production next build && next export",
+    "start": "next start",
+    "analyze": "ANALYZE=true next build"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^1.0.13",
+    "@chakra-ui/react": "^1.6.5",
+    "@goldn/data": "0.0.0",
+    "@goldn/data-blog": "0.0.0",
+    "@goldn/functions": "0.0.0",
+    "@goldn/hooks": "0.0.0",
+    "@goldn/icons": "0.0.0",
+    "@goldn/lib": "0.0.0",
+    "@goldn/ui": "0.0.0",
+    "@types/react-lazyload": "^3.1.1",
+    "dotenv": "8.2.0",
+    "graphql": "^15.5.1",
+    "graphql-request": "^3.4.0",
+    "next": "10.2.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-lazy-load": "^3.1.13",
+    "react-lazyload": "^3.2.0",
+    "react-markdown": "6.0.2",
+    "react-share": "4.4.0",
+    "swr": "0.5.6"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "10.2.0"
+  }
+}

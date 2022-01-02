@@ -1,0 +1,16 @@
+node_modules/*
+./node_modules/**
+**/node_modules/**
+
+out/*
+./out/**
+**/out/**
+
+.next/*
+./.next/**
+**/.next/**
+*-fake-data.js
+*.json
+*.rules
+.idea
+./packages/ui/storybook-static/**

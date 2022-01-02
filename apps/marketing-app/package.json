@@ -1,0 +1,52 @@
+{
+  "name": "@goldn/marketing-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next export",
+    "build:staging": "STAGE=staging next build && next export",
+    "build:production": "STAGE=production next build && next export",
+    "start": "next start",
+    "analyze": "ANALYZE=true next build",
+    "generate-data": "node generate-fake-data.js > fake-data.js",
+    "extract-company": "echo module.exports =  > companyTypes.js  && node extract-companytypes.js >> companyTypes.js",
+    "extract-services": "echo module.exports =  > services.js && node extract-services.js >> services.js",
+    "extract-locations": "echo module.exports =  > locations.js && node extract-locations.js >> locations.js",
+    "prep-source-js": "echo module.exports =  > source.js && cat source.json >> source.js",
+    "load-data": "node -r dotenv/config  load-data.js dotenv_config_path=env/.env.development"
+  },
+  "dependencies": {
+    "@goldn/data": "0.0.0",
+    "@goldn/data-blog": "0.0.0",
+    "@goldn/functions": "0.0.0",
+    "@goldn/hooks": "0.0.0",
+    "@goldn/icons": "0.0.0",
+    "@goldn/lib": "0.0.0",
+    "@goldn/ui": "0.0.0",
+    "dotenv": "8.2.0",
+    "firebase": "^8.4.2",
+    "next": "10.2.0",
+    "next-routes": "^1.4.2",
+    "randomstring": "^1.2.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-infinite-scroll-hook": "^4.0.1",
+    "react-meta-tags": "^1.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-toast-notifications": "^2.5.1",
+    "react-undo-redo": "^2.0.0",
+    "reactjs-popup": "^2.0.5",
+    "slugify": "^1.6.0"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "10.2.0",
+    "faker": "^5.5.3",
+    "json-schema-faker": "^0.5.0-rcv.34"
+  },
+  "description": "this repository uses yarn workspaces. Simply run",
+  "main": "companyTypes.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

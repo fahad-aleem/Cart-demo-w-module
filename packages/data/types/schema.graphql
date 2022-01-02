@@ -1,0 +1,1792 @@
+input AcceptInvite {
+    acceptedAt: Timestamp!
+}
+
+type Address implements Node {
+    id: ID!
+    type: String!
+    street: String!
+    city: String!
+    state: String!
+    country: String!
+    postalCode: String!
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type AddressConnection {
+    totalCount: Int!
+    pageInfo: PageInfo!
+    edges: [AddressEdge!]!
+}
+
+type AddressEdge {
+    cursor: String!
+    type: String!
+    node: Address
+}
+
+scalar Any
+
+type BillingPlan implements Node, Record {
+    id: ID!
+    active: Boolean!
+    name: String!
+    userCount: Int!
+    guestCount: Int!
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type BillingPlanConnection {
+    totalCount: Int!
+    pageInfo: PageInfo!
+    edges: [BillingPlanEdge!]!
+}
+
+type BillingPlanEdge {
+    cursor: String!
+    node: BillingPlan
+}
+
+type Capacity {
+    amount: Float!
+    unit: CapacityUnit!
+}
+
+enum CapacityUnit {
+    MILLILITER
+    OUNCE
+    DROP
+    CUBIC_CENTIMETER
+    MILLIGRAM
+    GRAM
+    TEASPOON
+    TABLESPOON
+    CUP
+    GALLON
+    QUART
+    PINT
+    KILOGRAM
+    LITER
+}
+
+type Certification implements Node, Record {
+    id: ID!
+    productId: ID!
+    specification: [String!]
+    tests: [RegulatoryTest!]
+    certifications: [String!]
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+interface Colleague {
+    userId: ID!
+    teamId: ID!
+    role: ColleagueRole!
+}
+
+enum ColleagueRole {
+    OWNER
+    ADMIN
+    MEMBER
+    GUEST
+}
+
+enum ColleagueType {
+    CREATOR
+    VENDOR
+    CREATOR_VENDOR
+    GUEST
+}
+
+enum ContentType {
+    TEXT
+    IMAGE
+    URL
+}
+
+enum Currency {
+    USD
+    EUR
+    AED
+    ALL
+    AMD
+    ANG
+    AOA
+    ARS
+    AUD
+    AWG
+    AZN
+    BAM
+    BBD
+    BDT
+    BGN
+    BHD
+    BIF
+    BMD
+    BND
+    BOB
+    BOV
+    BRL
+    BSD
+    BTN
+    BWP
+    BYN
+    BZD
+    CAD
+    CDF
+    CHE
+    CHF
+    CHW
+    CLF
+    CLP
+    CNY
+    COP
+    COU
+    CRC
+    CUC
+    CUP
+    CVE
+    CZK
+    DJF
+    DKK
+    DOP
+    DZD
+    EGP
+    ERN
+    ETB
+    FJD
+    FKP
+    GBP
+    GEL
+    GHS
+    GIP
+    GMD
+    GNF
+    GTQ
+    GYD
+    HKD
+    HNL
+    HRK
+    HTG
+    HUF
+    IDR
+    ILS
+    INR
+    IQD
+    IRR
+    ISK
+    JMD
+    JOD
+    JPY
+    KES
+    KGS
+    KHR
+    KMF
+    KPW
+    KRW
+    KWD
+    KYD
+    KZT
+    LAK
+    LBP
+    LKR
+    LRD
+    LSL
+    LYD
+    MAD
+    MDL
+    MGA
+    MKD
+    MMK
+    MNT
+    MOP
+    MRU
+    MUR
+    MVR
+    MWK
+    MXN
+    MXV
+    MYR
+    MZN
+    NAD
+    NGN
+    NIO
+    NOK
+    NPR
+    NZD
+    OMR
+    PAB
+    PEN
+    PGK
+    PHP
+    PKR
+    PLN
+    PYG
+    QAR
+    RON
+    RSD
+    RUB
+    RWF
+    SAR
+    SBD
+    SCR
+    SDG
+    SEK
+    SGD
+    SHP
+    SLL
+    SOS
+    SRD
+    SSP
+    STN
+    SVC
+    SYP
+    SZL
+    THB
+    TJS
+    TMT
+    TND
+    TOP
+    TRY
+    TTD
+    TWD
+    TZS
+    UAH
+    UGX
+    USN
+    UYI
+    UYU
+    UZS
+    VEF
+    VND
+    VUV
+    WST
+    XAF
+    XCD
+    XDR
+    XOF
+    XPF
+    XSU
+    XUA
+    YER
+    ZAR
+    ZMW
+    ZWL
+}
+
+type Duration {
+    value: Int!
+    unit: DurationUnit!
+}
+
+enum DurationUnit {
+    DAYS
+    MONTHS
+    YEARS
+}
+
+enum EmployeeCount {
+    RANGE1
+    RANGE11
+    RANGE31
+    RANGE51
+    RANGE100
+}
+
+enum Feature {
+    VEGAN
+    PLANT_BASED
+    HALAL
+    CERTIFIED_ORGANIC
+    PROPOSITION_65_COMPLIANT
+}
+
+input FilterBy {
+    field: String!
+    value: String!
+}
+
+type Formulation implements Node, Record {
+    id: ID!
+    productId: ID!
+    quantity: Int!
+    benchmarks: String
+    desiredIngredients: String
+    avoidIngredients: String
+    mustIngredients: String
+    minShelfLife: Duration
+    weightPerItem: Capacity
+    targetSkin: [String!]
+    desiredTesting: [String!]
+    desiredCharacteristics: [String!]
+    desiredFunctionalities: [String!]
+    scent: [String!]
+    texture: [String!]
+    mustFeatures: [Feature!]
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type IdeationBoard implements Node, Record {
+    id: ID!
+    name: String!
+    description: String
+    cards: IdeationCardConnection
+    collections: IdeationCollectionConnection
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+enum IdeationBoardType {
+    USER
+    TEAM
+    PRODUCT
+}
+
+type IdeationCard implements Node, Record {
+    id: ID!
+    boardId: ID!
+    collectionId: ID
+    name: String!
+    description: String
+    section: IdeationCardSection
+    content: String!
+    contentType: ContentType!
+    position: Point!
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type IdeationCardConnection {
+    totalCount: Int!
+    pageInfo: PageInfo
+    edges: [IdeationCardEdge!]!
+}
+
+type IdeationCardEdge {
+    cursor: String!
+    node: IdeationCard
+}
+
+enum IdeationCardSection {
+    FORMULA
+    IDEATION
+    TESTING
+    PRODUCT_BRIEF
+    MANUFACTURING
+    REGULATORY
+    PACKAGING
+    LAUNCH
+}
+
+type IdeationCollection implements Node, Record {
+    id: ID!
+    boardId: ID!
+    name: String!
+    description: String
+    cards: IdeationCardConnection
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type IdeationCollectionConnection {
+    totalCount: Int!
+    pageInfo: PageInfo
+    edges: [IdeationCollectionEdge!]!
+}
+
+type IdeationCollectionEdge {
+    cursor: String!
+    node: IdeationCollection
+}
+
+type Invite implements Node, Record {
+    id: ID!
+    teamId: ID!
+    email: String!
+    role: ColleagueRole!
+    code: String!
+    expiresAt: Timestamp!
+    accepted: Boolean
+    acceptedAt: Timestamp
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type InviteConnection {
+    totalCount: Int!
+    pageInfo: PageInfo!
+    edges: [InviteEdge!]!
+}
+
+type InviteEdge {
+    cursor: String!
+    node: Invite
+}
+
+type Money {
+    amount: Float!
+    currency: SupportedCurrency!
+}
+
+type Mutation {
+    #  Create a new team
+    createTeam(input: NewTeam!): Team!
+    #  Update an existing team
+    updateTeam(id: ID!, input: UpdateTeam!): Team!
+    #  Remove a team from goldn
+    deleteTeam(id: ID!): String!
+    #  Add a team address
+    addTeamAddress(teamId: ID!, input: NewAddress!): Address!
+    #  Updates an existing team address
+    updateTeamAddress(id: String!, input: UpdateAddress!): Address!
+    #  Remove a team address
+    removeTeamAddress(id: String!): String!
+    #  Add a new team member to an existing team
+    addTeamMember(teamId: ID!, input: NewTeamMember!): TeamMember!
+    #  Update the Team Member Role for an existing team member
+    editTeamMemberRole(id: ID!, input: UpdateTeamMember!): TeamMember!
+    #  Transfers ownership of a team from one owner to another
+    transferOwnership(id: ID!): TeamMember!
+    #  Remove a team member from a team. NOTE removing a user from their primary team also denies that user access to Goldn
+    removeTeamMember(id: ID!): String!
+    #  Update an existing teams settings, NOTE This mutation is a placeholder for future features
+    updateTeamSettings(id: ID!): TeamSettings!
+    #  Sets the teams billing plan
+    setTeamBilling(teamId: ID!, input: NewTeamBilling!): TeamBilling!
+    #  Invite a new member to an existing Team
+    inviteTeamMember(teamId: ID!, input: [NewMemberInvite!]!): [Invite!]!
+    #  Resets and sends a new invite email for an existing invite
+    resendTeamMemberInvite(id: ID!): Invite!
+    #  Records the time the invite was accepted
+    acceptTeamMemberInvite(code: String!, acceptedAt: Timestamp!): Invite!
+    #  Revoke a team invite
+    revokeTeamMemberInvite(id: ID!): String!
+    #  Create a new Product
+    createProduct(teamId: ID!, input: NewProduct!): Product!
+    #  Update an existing Product
+    updateProduct(id: ID!, input: UpdateProduct!): Product!
+    #  Archive an existing product
+    archiveProduct(id: ID!): String!
+    #  Restore an archived product
+    restoreProduct(id: ID!): String!
+    #  Add a product contributor to an existing product
+    addProductContributor(
+        productId: ID!
+        input: NewProductContributor!
+    ): ProductContributor!
+    #  Update an existing product contributor
+    updateProductContributor(
+        id: ID!
+        input: UpdateProductContributor!
+    ): ProductContributor!
+    #  Removes a product contributor from a product
+    removeProductContributor(id: ID!): String!
+    #  Save answer to the product mini-questionnaire
+    saveQuestionnaireAnswers(
+        productId: ID!
+        input: [NewQuestionnaireAnswer!]!
+    ): [QuestionnaireAnswer!]!
+    #  Save answer to the product mini-questionnaire
+    removeQuestionnaireAnswers(ids: [ID!]!): String!
+    #  Add formulation information to an existing product
+    addFormulation(productId: ID!, input: NewFormulation!): Formulation!
+    #  Update formulation information for a product
+    updateFormulation(id: ID!, input: UpdateFormulation!): Formulation!
+    #  Add packaging information to an existing product
+    addPackaging(productId: ID!, input: NewPackaging!): Packaging!
+    #  Update packaging information for a product
+    updatePackaging(id: ID!, input: UpdatePackaging!): Packaging!
+    #  Add testing and certification information to an existing product
+    addCertification(productId: ID!, input: NewCertification!): Certification!
+    #  Update existing testing and certification information for a product
+    updateCertification(id: ID!, input: UpdateCertification!): Certification!
+    #  Share a product brief with an individual or company
+    shareProductBrief(productId: ID!, input: NewSharedBrief!): SharedBrief!
+    #  Re-send and renew an existing shared product brief
+    resendSharedBrief(id: ID!): SharedBrief!
+    #  Revoke and remove access to a shared product brief
+    revokeSharedBrief(id: ID!): String!
+    #  Creates a new task to complete a unit of work on a product
+    createTask(productId: ID!, input: NewTask!): Task!
+    #  Updates an existing task
+    updateTask(id: ID!, input: UpdateTask!): Task!
+    #  Marks one to n tasks as In Progress
+    startTasks(id: [ID!]!): [Task!]!
+    #  Marks one to n tasks as Completed
+    completeTasks(id: [ID!]!): [Task!]!
+    #  Marks one to n tasks as Skipped
+    skipTasks(id: [ID!]!): [Task!]!
+    #  Create a new ideation board
+    createIdeationBoard(entityId: ID!, input: NewIdeationBoard!): IdeationBoard!
+    #  Updates an existing ideation board
+    updateIdeationBoard(id: ID!, input: UpdateIdeationBoard!): IdeationBoard!
+    #  Define the an existing entity a board ideates
+    boardIdeates(boardId: ID!, entityId: ID!): String!
+    #  Create a new ideation card
+    createIdeationCard(boardId: ID!, input: NewIdeationCard!): IdeationCard!
+    #  Update an existing ideation card
+    updateIdeationCard(id: ID!, input: UpdateIdeationCard!): IdeationCard!
+    #  Delete an existing ideation card
+    deleteIdeationCard(id: ID!): String!
+    #  Add 1 to N existing card(s) to a card collection
+    addCardsToCollection(collectionId: ID!, ids: [ID!]): String!
+    #  Remove 1 to N existing card(s) from a card collection
+    removeCardsFromCollection(collectionId: ID!, ids: [ID!]): String!
+    #  Create a new collection of ideation cards
+    createIdeationCardCollection(
+        boardId: ID!
+        input: NewIdeationCollection!
+    ): IdeationCollection!
+    #  Update an existing collection of ideation cards
+    updateIdeationCardCollection(
+        id: ID!
+        input: UpdateIdeationCollection!
+    ): IdeationCollection!
+    #  Delete an existing collection of ideation cards
+    deleteIdeationCardCollection(id: ID!): String!
+    #  Register a new user and team
+    register(input: NewRegistration!): Registration!
+    #  Register a user invited to Goldn
+    registerInvitedUser(input: NewInviteRegistration!): String!
+    #  Registers a new User with Goldn
+    registerUser(input: NewUser!): User!
+    #  Update an existing user
+    updateUser(id: ID!, input: UpdateUser!): User!
+    #  Update settings for an existing user
+    updateUserSettings(id: ID!, input: UpdateUserSettings!): UserSettings!
+    #  Update a user authentication identity for an existing user identity
+    updateUserIdentity(id: ID!, input: UpdateUserIdentity!): UserIdentity!
+    #  Marks a notification as read
+    readNotification(id: ID!): Notification!
+}
+
+input NewAddress {
+    type: String!
+    street: String!
+    city: String!
+    state: String!
+    country: String!
+    postalCode: String!
+}
+
+input NewCapacity {
+    amount: Float!
+    unit: CapacityUnit!
+}
+
+input NewCertification {
+    specification: [String!]!
+    tests: [RegulatoryTest!]
+    certifications: [String!]
+}
+
+input NewDuration {
+    value: Int!
+    unit: DurationUnit!
+}
+
+input NewFailedSignup {
+    user: String!
+    team: String!
+}
+
+input NewFormulation {
+    quantity: Int!
+    benchmarks: String
+    desiredIngredients: String
+    avoidIngredients: String
+    mustIngredients: String
+    minShelfLife: NewDuration
+    weightPerItem: NewCapacity
+    targetSkin: [String!]
+    desiredTesting: [String!]
+    desiredCharacteristics: [String!]!
+    desiredFunctionalities: [String!]
+    scent: [String!]
+    texture: [String!]
+    mustFeatures: [Feature!]
+}
+
+input NewIdeationBoard {
+    name: String!
+    type: IdeationBoardType!
+    description: String
+}
+
+input NewIdeationCard {
+    name: String!
+    content: String!
+    contentType: ContentType!
+    description: String
+    position: NewPoint!
+    section: IdeationCardSection
+}
+
+input NewIdeationCollection {
+    name: String!
+    description: String
+    cards: [NewIdeationCard!]
+}
+
+input NewInviteRegistration {
+    code: String!
+    name: String!
+    displayName: String!
+}
+
+input NewMemberInvite {
+    role: ColleagueRole = MEMBER
+    email: String!
+}
+
+input NewMoney {
+    amount: Float!
+    currency: SupportedCurrency!
+}
+
+input NewPackaging {
+    specification: [String!]
+    type1: [String!]!
+    type2: [String!]
+    type3: [String!]
+    material1: [String!]!
+    material2: [String!]
+    material3: [String!]
+    copy1: String
+    copy2: String
+    copy3: String
+    quantity: Int
+    insertDescription: [String!]
+    image: String
+    label: [String!]
+    labelImage: String
+    benchmark: String
+    totalWeight: NewWeight
+}
+
+input NewPoint {
+    x: Float!
+    y: Float!
+}
+
+input NewProduct {
+    name: String!
+    category: ProductCategory!
+    type: ProductType!
+    form: [String!]!
+    isNew: Boolean!
+    line: String
+    description: String
+    targetPrice: NewMoney
+    targetAges: [TargetAge!]
+    targetGenders: [TargetGender!]
+    targetMarkets: [TargetMarket!]!
+    marketPosition: [String!]
+    lifestyle: [String!]
+    personality: [String!]
+    budget: NewMoney
+    launchOn: Timestamp
+    primaryClaims: [String!]
+    secondaryClaims: [String!]
+    answers: [NewQuestionnaireAnswer]
+    contributors: [NewProductContributor]
+    formulation: NewFormulation
+    certification: NewCertification
+    packaging: NewPackaging
+}
+
+input NewProductContributor {
+    teamMemberId: ID!
+    editFiles: Boolean
+    editTasks: Boolean
+    editBrief: Boolean
+}
+
+input NewQuestionnaireAnswer {
+    questionName: String!
+    questionGroup: String!
+    answer: String!
+}
+
+input NewRegistration {
+    NewUser: NewUser!
+    NewTeam: NewTeam!
+}
+
+input NewSharedBrief {
+    email: String!
+    name: String
+    companyName: String
+    vendorType: String
+}
+
+input NewTask {
+    section: String!
+    name: String!
+    orderNum: Int!
+    instruction: String!
+    requirement: TaskRequirement!
+    requester: ID
+    assignee: ID
+    dueBy: Timestamp
+}
+
+input NewTeam {
+    type: TeamType! = CREATOR
+    name: String!
+    displayName: String
+    website: String
+    bio: String
+    email: String
+    signedUpAt: Timestamp
+    employeeCount: EmployeeCount
+    members: [NewTeamMember]
+    addresses: [NewAddress]
+}
+
+input NewTeamBilling {
+    planId: ID!
+    subscriptionId: String!
+    last4: String!
+    startDate: Timestamp!
+    cycleDate: Timestamp!
+    endDate: Timestamp!
+}
+
+input NewTeamGuest {
+    userId: ID!
+    allowedEntity: String
+    allowedEntityId: String
+}
+
+input NewTeamMember {
+    userId: ID!
+    role: ColleagueRole!
+    type: ColleagueType!
+    primaryOwner: Boolean
+}
+
+input NewUser {
+    status: UserStatus! = PENDING
+    name: String!
+    email: String!
+    username: String
+    displayName: String
+    phone: String
+    jobTitle: UserJobTitle
+    marketing: Boolean
+    newsletter: Boolean
+    privacy: Timestamp
+    terms: Timestamp
+    settings: NewUserSettings
+    identities: [NewUserIdentity]
+}
+
+input NewUserIdentity {
+    active: Boolean! = true
+    identityId: String!
+    identityType: String!
+}
+
+input NewUserSettings {
+    notifyInApp: Boolean
+    notifyByEmail: Boolean
+    doNotDisturb: Boolean
+}
+
+input NewWeight {
+    value: Float!
+    unit: WeightUnit!
+}
+
+interface Node {
+    id: ID!
+}
+
+type Notification implements Node, Record {
+    id: ID!
+    audience: ID!
+    message: String!
+    attributes: [NotificationTuple]
+    attempts: Int
+    read: Boolean
+    readAt: Timestamp
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type NotificationConnection {
+    totalCount: Int!
+    pageInfo: PageInfo!
+    edges: [NotificationEdge]
+}
+
+type NotificationEdge {
+    cursor: String!
+    node: Notification
+}
+
+type NotificationTuple {
+    key: String!
+    value: String!
+}
+
+type Packaging implements Node, Record {
+    id: ID!
+    productId: ID!
+    specification: [String!]
+    type1: [String!]
+    type2: [String!]
+    type3: [String!]
+    material1: [String!]
+    material2: [String!]
+    material3: [String!]
+    copy1: String
+    copy2: String
+    copy3: String
+    quantity: Int
+    insertDescription: [String!]
+    image: String
+    label: [String!]
+    labelImage: String
+    benchmark: String
+    totalWeight: Weight
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type PageInfo {
+    hasNextPage: Boolean!
+    endCursor: String!
+    hasPreviousPage: Boolean!
+    startCursor: String!
+}
+
+type Point {
+    x: Float!
+    y: Float!
+}
+
+type Product implements Node, Record {
+    id: ID!
+    teamId: ID!
+    isNew: Boolean!
+    name: String!
+    category: ProductCategory!
+    type: ProductType!
+    line: String
+    description: String
+    form: [String!]
+    targetPrice: Money
+    targetAges: [TargetAge!]
+    targetGenders: [TargetGender!]
+    targetMarkets: [TargetMarket!]!
+    marketPosition: [String!]
+    lifestyle: [String!]
+    personality: [String!]
+    budget: Money
+    launchOn: Timestamp
+    primaryClaims: [String!]
+    secondaryClaims: [String!]
+    answers: QuestionnaireAnswerConnection
+    contributors: ProductContributorConnection
+    formulation: Formulation
+    certification: Certification
+    packaging: Packaging
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+enum ProductCategory {
+    SUN_CARE
+    HAIR_CARE
+    SKIN_CARE
+    BODY_CARE
+    MAKEUP
+}
+
+type ProductConnection {
+    totalCount: Int!
+    pageInfo: PageInfo
+    edges: [ProductEdge!]!
+}
+
+type ProductContributor implements Node, Record {
+    id: ID!
+    productId: ID!
+    teamMemberId: ID!
+    editFiles: Boolean
+    editTasks: Boolean
+    editBrief: Boolean
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type ProductContributorConnection {
+    totalCount: Int!
+    pageInfo: PageInfo
+    edges: [ProductContributorEdge!]!
+}
+
+type ProductContributorEdge {
+    cursor: String!
+    node: ProductContributor
+}
+
+type ProductEdge {
+    cursor: String!
+    node: Product
+}
+
+enum ProductType {
+    BODY_SUN_CARE
+    FACE_SUN_CARE
+    LIP_SUN_CARE
+    BABY_SUN_CARE
+    KID_SUN_CARE
+    LOTION
+    SHAMPOO
+    DRY_SHAMPOO
+    CONDITIONER
+    SERUM
+    MOUSSE
+    TEXTURIZER
+    MASK
+    CLEANSING
+    SCALP_CLEANSING
+    WAX
+    WOEM
+    LEAVE_IN_CONDITIONER
+    CONDITIONING_SPRAY
+    HEAT_PROTECTANT
+    HAIR_SPRAY
+    DAY_FACE_CREAM
+    NIGHT_FACE_CREAM
+    EYE_CONTOUR
+    UNDER_EYE
+    LIP_BALM
+    LIP_PLUMPER
+    LIP_MASK
+    LIP_SCRUB
+    SKIN_SERUM
+    SKIN_MASK
+    SHEET_MASK
+    SKIN_CLEANSING
+    EXFOLIATOR
+    MICELLAR_WATER
+    TONER
+    ESSENCE
+    FIXING_SPRAY
+    FACIAL_BAR
+    SHAVING_FOAM
+    SHAVING_SOAP
+    AFTER_SHAVE
+    BB_CREAM
+    PRIMER
+    FACIAL_OIL
+    BLEMISH_TREATMENT
+    PIMPLE_TREATMENT
+    BODY_OIL
+    BODY_CREAM
+    BODY_LOTION
+    BODY_SCRUB
+    BODY_BAR
+    SHOWER_GEL
+    BODY_WASH
+    BUBBLE_BATH
+    SOAP
+    BATH_BOMB
+    DEODORANT
+    ANTI_PERSPIRANT
+    FOOT_CREAM
+    HAND_CREAM
+    HAND_GEL_ALCOHOL_BASED
+    CUTICLE_CREAM
+    BODY_SERUM
+    FOOT_STICK
+    ANTI_CELLULITE_CREAM
+    BODY_POLISH
+    BODY_MASK
+    PATCHES
+    TANNING_LOTION
+    BRONZER
+    ILLUMINATOR
+    LIPSTICK
+    LIP_GLOSS
+    LIP_TINT
+    LIP_BUTTER
+    LIP_STAIN
+    LIP_PENCIL
+    LIP_CRAYON
+    LIP_LINER
+    LIP_PRIMER
+    EYEBROW_PENCIL
+    EYEBROW_CRAYON
+    EYEBROW_POT
+    EYEBROW_POWDER
+    EYELINER_PENCIL
+    EYELINER_CRAYON
+    LIQUID_EYELINER
+    EYELINER_POT
+    INNER_LID_EYELINER
+    EYESHADOW
+    EYE_PRIMER
+    EYELASH_PRIMER
+    EYELASH_LENGTHENER
+    EYELASHES
+    MASCARA
+    BLUSH
+    MAKEUP_BRONZER
+    HIGHLIGHTER
+    CONCEALER
+    FOUNDATION
+    CC_CREAM
+}
+
+type Query {
+    #  Fetch a team using a team guid
+    team(id: ID!): Team!
+    #  Fetch a paginated list of teams
+    teams(query: QueryOpts): TeamConnection!
+    #  Fetch team settings using a team guid
+    teamSettings(teamId: ID!): TeamSettings!
+    #  Fetch team billing information using a team guid
+    teamBilling(teamId: ID!): TeamBilling!
+    #  Fetch a team member using a team member guid
+    teamMember(id: ID!): TeamMember!
+    #  Fetch a paginated list of team members using a team guid
+    teamMembers(teamId: ID!, query: QueryOpts): TeamMemberConnection!
+    #  Fetch a team member invite using the a member invite guid
+    teamMemberInvite(id: ID!): Invite!
+    #  Validate a team member invite before registration
+    verifyTeamMemberInvite(code: String!): Invite!
+    #  Fetch a paginated list of team member invites using a team guid
+    teamMemberInvites(teamId: ID!, query: QueryOpts): InviteConnection!
+    #  Fetch a team address using a team address guid
+    teamAddress(id: ID!): Address!
+    #  Fetch a paginated list of team address using a team guid
+    teamAddresses(teamId: ID!, query: QueryOpts): AddressConnection!
+    #  Fetches a paginated list of billing plans available for subscription
+    billingPlans(query: QueryOpts): BillingPlanConnection!
+    #  Fetch a product that a team has created
+    product(id: ID!): Product
+    #  Fetch a paginated list of products
+    products(teamId: ID!, query: QueryOpts): ProductConnection!
+    #  Fetch a product contributor
+    productContributor(id: ID!): ProductContributor!
+    #  Fetch a list of product contributors
+    productContributors(
+        productId: ID!
+        query: QueryOpts
+    ): ProductContributorConnection!
+    #  Fetch an answer to a mini-questionnaire question
+    questionnaireAnswer(id: ID!): QuestionnaireAnswer
+    #  Fetch a paginated list of answers to the Mini-questionnaire
+    questionnaireAnswers(
+        productId: ID!
+        query: QueryOpts
+    ): QuestionnaireAnswerConnection!
+    #  Fetch the formulation information for a product
+    formulation(productId: ID!): Formulation!
+    #  Fetch the packaging information for a product
+    packaging(productId: ID!): Packaging!
+    #  Fetch the testing & certification information for a product
+    certification(productId: ID!): Certification!
+    #  Fetch a shared brief
+    sharedBrief(id: ID!): SharedBrief!
+    #  Fetch a list of the shared briefs for a product
+    sharedBriefs(productId: ID!, query: QueryOpts): SharedBriefConnection!
+    #  Verify and view a shared product brief
+    viewSharedBrief(code: String!): SharedBrief!
+    #  Fetches a single task
+    task(id: ID!): Task
+    #  Fetches a list of tasked assigned to a user
+    tasks(userId: ID!, query: QueryOpts): TaskConnection!
+    #  Fetches a list of tasked where the assignment to complete a unit of work on a product
+    productTasks(productId: ID!, query: QueryOpts): TaskConnection!
+    #  Fetch an ideation board
+    ideationBoard(id: ID!): IdeationBoard!
+    #  Fetch an ideation board associated with a user
+    userIdeationBoard(userId: ID!): IdeationBoard!
+    #  Fetch an ideation board associated with a team
+    teamIdeationBoard(teamId: ID!): IdeationBoard!
+    #  Fetch an ideation board associated with a product
+    productIdeationBoard(productId: ID!): IdeationBoard!
+    #  Fetch an ideation card
+    ideationCard(id: ID!): IdeationCard!
+    #  Fetch a list of ideation cards associated with a board
+    ideationCards(boardId: ID!, query: QueryOpts): IdeationCardConnection!
+    #  Fetch a list of ideation cards collected into a collection
+    collectedIdeationCards(
+        collectionId: ID!
+        query: QueryOpts
+    ): IdeationCardConnection!
+    #  Fetch an ideation card collection
+    ideationCardCollection(id: ID!): IdeationCollection!
+    #  Fetch a list of ideation card collections associated with a board
+    ideationCardCollections(
+        boardId: ID!
+        query: QueryOpts
+    ): IdeationCollectionConnection!
+    #  Fetches the users primary team
+    primaryTeam(userId: ID!): Team!
+    #  Fetches required user for data for FE
+    userDetails(email: String!): UserDetails!
+    #  Fetch a user using a user guid
+    user(id: ID!): User!
+    #  Fetch a user using a unique email address
+    userByEmail(email: String!): User!
+    #  Fetch a user using a unique username
+    userByUsername(username: String!): User!
+    #  Fetch a paginated list of users
+    users(query: QueryOpts): UserConnection!
+    #  Fetch user settings using the user settings guid
+    userSettings(id: ID!): UserSettings!
+    #  Fetch a list of user authentication identities using the user guid
+    userIdentities(userId: ID!, query: QueryOpts): UserIdentityConnection!
+    #  Fetch a single notification
+    notification(id: ID!): Notification!
+    #  Fetch a list of notifications for the user
+    notifications(userId: ID!, query: QueryOpts): NotificationConnection!
+}
+
+input QueryOpts {
+    filter: FilterBy
+    sort: SortBy
+    first: Int
+    after: String
+    last: Int
+    before: String
+}
+
+type QuestionnaireAnswer {
+    id: ID!
+    productId: ID!
+    question: QuestionnaireQuestion!
+    answer: String!
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type QuestionnaireAnswerConnection {
+    totalCount: Int!
+    pageInfo: PageInfo
+    edges: [QuestionnaireAnswerEdge!]!
+}
+
+type QuestionnaireAnswerEdge {
+    cursor: String!
+    node: QuestionnaireAnswer
+}
+
+type QuestionnaireQuestion {
+    id: ID!
+    group: String!
+    position: Int!
+    name: String!
+    text: String!
+    suppliesField: String!
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+interface Record {
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type Registration {
+    user: User!
+    team: Team!
+}
+
+enum RegulatoryTest {
+    HEAVY_METALS
+    CBD_THC
+    ALLERGEN
+    CLINICAL
+}
+
+type SharedBrief implements Node, Record {
+    id: ID!
+    productId: ID!
+    product: Product
+    code: String!
+    email: String!
+    name: String
+    companyName: String
+    vendorType: String
+    expiresAt: Timestamp
+    viewed: Boolean
+    timesViewed: Int
+    lastViewed: Timestamp
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type SharedBriefConnection {
+    totalCount: Int!
+    pageInfo: PageInfo
+    edges: [SharedBriefEdge!]!
+}
+
+type SharedBriefEdge {
+    cursor: String!
+    node: SharedBrief
+}
+
+input SortBy {
+    field: String!
+    direction: SortDirection!
+}
+
+enum SortDirection {
+    ASCENDING
+    DESCENDING
+}
+
+enum SupportedCurrency {
+    USD
+    EUR
+}
+
+enum TargetAge {
+    BABY
+    KID
+    TEEN
+    ADULT18
+    ADULT30
+    ADULT45
+    ADULT60
+}
+
+enum TargetGender {
+    WOMEN
+    MEN
+    EVERYONE
+}
+
+enum TargetMarket {
+    US
+    CANADA
+    EUROPE
+    CHINA
+    MEXICO
+    RUSSIA
+}
+
+type Task implements Node, Record {
+    id: ID!
+    productId: ID!
+    orderNum: Int!
+    requester: ID
+    assignee: ID
+    name: String!
+    section: String!
+    status: TaskStatus!
+    requirement: TaskRequirement!
+    instruction: String!
+    description: String
+    dueBy: Timestamp
+    assignedAt: Timestamp
+    inProgressAt: Timestamp
+    completedAt: Timestamp
+    skippedAt: Timestamp
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type TaskConnection {
+    totalCount: Int!
+    pageInfo: PageInfo
+    edges: [TaskEdge!]!
+}
+
+type TaskEdge {
+    cursor: String!
+    node: Task
+}
+
+enum TaskRequirement {
+    RECOMMENDED
+    OPTIONAL
+}
+
+enum TaskStatus {
+    READY
+    IN_PROGRESS
+    COMPLETED
+    SKIPPED
+}
+
+type TaskTemplate implements Node, Record {
+    id: ID!
+    name: String!
+    orderNum: Int!
+    section: String!
+    requirement: String!
+    instruction: String!
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type Team implements Node, Record {
+    id: ID!
+    active: Boolean!
+    certified: Boolean!
+    name: String!
+    type: TeamType!
+    displayName: String!
+    website: String
+    bio: String
+    email: String!
+    signedUpAt: Timestamp!
+    employeeCount: EmployeeCount!
+    settings: TeamSettings
+    billing: TeamBilling
+    members(
+        first: Int
+        after: String
+        last: Int
+        before: String
+    ): TeamMemberConnection!
+    addresses(
+        first: Int
+        after: String
+        last: Int
+        before: String
+    ): AddressConnection
+    invites(
+        first: Int
+        after: String
+        last: Int
+        before: String
+    ): InviteConnection
+    products(query: QueryOpts): ProductConnection
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type TeamBilling implements Node, Record {
+    id: ID!
+    teamId: ID!
+    subscriptionId: ID
+    last4: String
+    startDate: Timestamp
+    cycleDate: Timestamp
+    endDate: Timestamp
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type TeamConnection {
+    totalCount: Int!
+    pageInfo: PageInfo!
+    edges: [TeamEdge]
+}
+
+type TeamEdge {
+    cursor: String!
+    type: TeamType!
+    node: Team
+}
+
+type TeamGuest implements Node, Record, Colleague {
+    id: ID!
+    active: Boolean!
+    userId: ID!
+    teamId: ID!
+    type: ColleagueType!
+    role: ColleagueRole!
+    allowedEntity: String
+    allowedEntityId: ID
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type TeamMember implements Node, Record, Colleague {
+    id: ID!
+    active: Boolean!
+    primary: Boolean!
+    primaryOwner: Boolean!
+    userId: ID!
+    user: User
+    teamId: ID!
+    type: ColleagueType!
+    role: ColleagueRole!
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type TeamMemberConnection {
+    totalCount: Int!
+    pageInfo: PageInfo!
+    edges: [TeamMemberEdge!]!
+}
+
+type TeamMemberEdge {
+    cursor: String!
+    isTeamMember: Boolean!
+    node: TeamMember
+}
+
+type TeamSettings implements Node, Record {
+    id: ID!
+    teamId: ID!
+    allowedDomains: String
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+enum TeamType {
+    CREATOR
+    VENDOR
+    CREATOR_VENDOR
+}
+
+scalar Timestamp
+
+input UpdateAddress {
+    type: String
+    street: String
+    city: String
+    state: String
+    country: String
+    postalCode: String
+}
+
+input UpdateCapacity {
+    amount: Float!
+    unit: CapacityUnit!
+}
+
+input UpdateCertification {
+    specification: [String!]
+    tests: [RegulatoryTest!]
+    certifications: [String!]
+}
+
+input UpdateDuration {
+    value: Int!
+    unit: DurationUnit!
+}
+
+input UpdateFormulation {
+    quantity: Int
+    benchmarks: String
+    desiredIngredients: String
+    avoidIngredients: String
+    mustIngredients: String
+    minShelfLife: UpdateDuration
+    weightPerItem: UpdateCapacity
+    targetSkin: [String!]
+    desiredTesting: [String!]
+    desiredCharacteristics: [String!]
+    desiredFunctionalities: [String!]
+    scent: [String!]
+    texture: [String!]
+    mustFeatures: [Feature!]
+}
+
+input UpdateIdeationBoard {
+    name: String
+    description: String
+}
+
+input UpdateIdeationCard {
+    name: String
+    description: String
+    position: UpdatePoint
+    section: IdeationCardSection
+}
+
+input UpdateIdeationCollection {
+    name: String
+    description: String
+}
+
+input UpdateMoney {
+    amount: Float!
+    currency: SupportedCurrency!
+}
+
+input UpdatePackaging {
+    specification: [String!]
+    type1: [String!]
+    type2: [String!]
+    type3: [String!]
+    material1: [String!]
+    material2: [String!]
+    material3: [String!]
+    copy1: String
+    copy2: String
+    copy3: String
+    quantity: Int
+    insertDescription: [String!]
+    image: String
+    label: [String!]
+    labelImage: String
+    benchmark: String
+    totalWeight: UpdateWeight
+}
+
+input UpdatePoint {
+    x: Float!
+    y: Float!
+}
+
+input UpdateProduct {
+    name: String
+    category: ProductCategory
+    type: ProductType
+    isNew: Boolean
+    line: String
+    description: String
+    form: [String!]
+    targetPrice: NewMoney
+    targetAges: [TargetAge!]
+    targetGenders: [TargetGender!]
+    targetMarkets: [TargetMarket!]
+    marketPosition: [String!]
+    lifestyle: [String!]
+    personality: [String!]
+    budget: NewMoney
+    launchOn: Timestamp
+    primaryClaims: [String!]
+    secondaryClaims: [String!]
+}
+
+input UpdateProductContributor {
+    editFiles: Boolean
+    editTasks: Boolean
+    editBrief: Boolean
+}
+
+input UpdateTask {
+    requester: ID
+    assignee: ID
+    description: String
+    status: TaskStatus
+    dueBy: Timestamp
+}
+
+input UpdateTeam {
+    certified: Boolean
+    displayName: String
+    website: String
+    bio: String
+    email: String
+    signedUpAt: Timestamp
+    employeeCount: EmployeeCount
+}
+
+input UpdateTeamBilling {
+    planId: ID
+    subscriptionId: String
+    last4: String
+    startDate: Timestamp
+    cycleDate: Timestamp
+    endDate: Timestamp
+}
+
+input UpdateTeamMember {
+    role: ColleagueRole!
+}
+
+input UpdateUser {
+    status: UserStatus
+    active: Boolean
+    name: String
+    username: String
+    displayName: String
+    email: String
+    phone: String
+    jobTitle: UserJobTitle
+    marketing: Boolean
+    newsletter: Boolean
+    privacy: Timestamp
+    terms: Timestamp
+}
+
+input UpdateUserIdentity {
+    active: Boolean
+    lastLogin: Timestamp
+}
+
+input UpdateUserSettings {
+    notifyInApp: Boolean
+    notifyByEmail: Boolean
+    doNotDisturb: Boolean
+}
+
+input UpdateWeight {
+    value: Float!
+    unit: WeightUnit!
+}
+
+type User implements Node, Record {
+    id: ID!
+    status: UserStatus!
+    name: String!
+    username: String!
+    displayName: String!
+    email: String!
+    phone: String!
+    jobTitle: UserJobTitle!
+    marketing: Boolean!
+    newsletter: Boolean!
+    privacy: Timestamp!
+    terms: Timestamp!
+    settings: UserSettings
+    identities(
+        first: Int
+        after: String
+        last: Int
+        before: String
+    ): UserIdentityConnection
+    primaryTeam: Team
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type UserConnection {
+    totalCount: Int!
+    pageInfo: PageInfo!
+    edges: [UserEdge]
+}
+
+type UserDetails {
+    user: User!
+    team: Team!
+    notifications: NotificationConnection
+    tasks: TaskConnection
+    primaryUserRole: ColleagueRole!
+    primaryUserType: ColleagueType!
+}
+
+type UserEdge {
+    cursor: String!
+    node: User
+}
+
+type UserIdentity implements Node, Record {
+    id: ID!
+    active: Boolean
+    userId: String!
+    identityId: String!
+    identityType: String!
+    lastLogin: Timestamp
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+type UserIdentityConnection {
+    totalCount: Int!
+    pageInfo: PageInfo!
+    edges: [UserIdentityEdge!]!
+}
+
+type UserIdentityEdge {
+    cursor: String!
+    node: UserIdentity
+}
+
+enum UserJobTitle {
+    CEO
+    PROJECT_MANAGER
+    FORMULATOR
+    QUALITY
+    MARKETING
+    SALES
+    DEVELOPMENT
+    HR
+    OTHER
+}
+
+type UserSettings implements Node, Record {
+    id: ID!
+    userId: ID!
+    notifyInApp: Boolean!
+    notifyByEmail: Boolean!
+    doNotDisturb: Boolean!
+    createdBy: String
+    createdAt: Timestamp
+    updatedBy: String
+    updatedAt: Timestamp
+}
+
+enum UserStatus {
+    ACTIVE
+    DEACTIVATED
+    PENDING
+    UNDER_ADMIN_REVIEW
+}
+
+type Weight {
+    value: Float!
+    unit: WeightUnit!
+}
+
+enum WeightUnit {
+    OUNCE
+    MILLILITER
+    MILLIGRAM
+    GRAM
+    KILOGRAM
+    LITER
+}
+

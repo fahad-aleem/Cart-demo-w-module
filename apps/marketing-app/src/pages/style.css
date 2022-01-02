@@ -1,0 +1,70 @@
+body {
+  background-color: #f7f6f4 !important;
+}
+
+.w100 {
+  width: 100% !important;
+}
+
+.FilterSideBar .chakra-checkbox__control {
+  margin-top: 4px;
+}
+.FilterListItem:not(:hover) {
+  box-shadow: inset 0px 0px 9px rgba(240, 240, 240, 0.4);
+}
+.FilterSideBar button > svg {
+  color: lightgray;
+}
+.FilterSideBar button > svg {
+  transform: rotate(180deg);
+}
+.FilterSideBar button > .selectedCheckBtn + svg {
+  position: absolute;
+  right: 0;
+  top: 12px;
+  transform: none;
+}
+
+.FilterBtn > svg {
+  display: inline-block;
+}
+
+/* Mobile Supplier Filters - Drawer  */
+.FilterSidebar .FilterSideBar {
+  min-width: 100%;
+  max-width: 100%;
+  padding: 0;
+  box-shadow: none;
+}
+
+/* Mobile Supplier Details - Drawer  */
+.DetailSidebar .DetailSection {
+  max-width: 100% !important;
+}
+.DetailSidebar .chakra-modal__body {
+  padding: 0;
+}
+/* Responsiveness  */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .FilterSideBar {
+    min-width: 280px !important;
+    max-width: 280px !important;
+  }
+  .FilterListItem h2 {
+    font-size: 18px;
+  }
+  .DetailSection {
+    padding-left: 10px;
+    padding-right: 15px;
+  }
+  .DetailSection h1 {
+    font-size: 26px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .ItemListMobile {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}

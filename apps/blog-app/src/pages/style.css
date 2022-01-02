@@ -1,0 +1,131 @@
+body {
+  background-color: #f7f6f4 !important;
+}
+
+.w100 {
+  width: 100% !important;
+}
+
+.paginatorBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+/* / for Firefox / */
+.thinScroll {
+  scrollbar-width: thin;
+}
+
+/* / for Chrome / */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 4px;
+  scrollbar-width: thin;
+}
+/* / Track / */
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+/* / Handle / */
+::-webkit-scrollbar-thumb {
+  background: #cdcdcd;
+}
+/* / Handle on hover / */
+::-webkit-scrollbar-thumb:hover {
+  background: #bbbbbb;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #f7f6f4 inset !important;
+}
+
+/* Mobile Menu  */
+.mainMenus > .css-r6z5ec {
+  transform: translate3d(0, 60px, 0px) !important;
+  left: 15px !important;
+  right: 15px !important;
+}
+
+/* / Category Top Bar/List / */
+
+.catList > .css-qwytqh {
+  padding-right: 60px;
+}
+
+.catList .css-ohwg9z,
+.catBar .css-ohwg9z {
+  position: absolute;
+  right: 0;
+  margin-top: -4px;
+}
+.catBar {
+  border-bottom: 1px solid #e0ded9;
+}
+.catBar .chakra-button .chakra-text {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.catBar .chakra-button__icon {
+  font-size: x-large;
+  margin: 0;
+}
+.catBar .chakra-menu__menuitem a {
+  color: inherit !important;
+}
+
+@media (max-width: 767px) {
+  .catBar .css-ohwg9z {
+    margin-top: 0;
+  }
+}
+
+.searchBar {
+  background-color: #f7f6f4;
+  position: absolute;
+  right: -210px;
+  z-index: 9;
+  transition: all 500ms;
+  -webkit-transition: all 500ms;
+}
+.searchBar.active {
+  right: 0;
+  z-index: 100;
+}
+
+.searchBar.active > button {
+  position: relative;
+}
+.searchBar.active > button:before {
+  content: "";
+  background-color: #eae9e7;
+  width: 2px;
+  height: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+}
+.searchResult .searchBar > button:before {
+  display: none;
+}
+.searchResult .searchBar > button:nth-child(1) {
+  min-width: auto;
+  margin-right: 10px;
+}
+.searchResult .searchBar {
+  right: 0 !important;
+  padding-left: 0;
+}
+
+@media (min-width: 640px) {
+  .searchResult .btnAll {
+    margin-bottom: 0 !important;
+  }
+}

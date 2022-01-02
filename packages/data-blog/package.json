@@ -1,0 +1,23 @@
+{
+  "name": "@goldn/data-blog",
+  "version": "0.0.0",
+  "main": "src/index.ts",
+  "sideEffects": [
+    "./src/graphqlClient.ts"
+  ],
+  "dependencies": {
+    "graphql": "15.5.0",
+    "graphql-request": "3.4.0",
+    "react": "17.0.2",
+    "swr": "0.5.5"
+  },
+  "devDependencies": {
+    "@types/graphql": "14.5.0",
+    "apollo": "2.32.10"
+  },
+  "scripts": {
+    "generate:delete": "find ./ -name '_generated' | xargs rm -Rf",
+    "generate": "yarn generate:delete && apollo codegen:generate --localSchemaFile=./types/graphql-schema.json --target=typescript --includes=./**/*.ts --tagName=gql --addTypename --globalTypesFile=./types/graphql-global-types.ts _generated",
+    "schema": "apollo schema:download --endpoint=https://staging-cms.goldn.com/graphql ./types/graphql-schema.json"
+  }
+}

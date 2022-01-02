@@ -1,0 +1,1 @@
+rm locations.js services.js companyTypes.js ||:

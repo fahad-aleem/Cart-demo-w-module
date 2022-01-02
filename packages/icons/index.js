@@ -1,0 +1,13 @@
+export { GoogleIcon } from "./src/GoogleIcon";
+export { TickIcon } from "./src/TickIcon";
+export { FacebookIcon } from "./src/FacebookIcon";
+export { LinkedinIcon } from "./src/LinkedinIcon";
+export { InstagramIcon } from "./src/InstagramIcon";
+export { TwitterIcon } from "./src/TwitterIcon";
+export { LinkIcon } from "./src/LinkIcon";
+export { PhoneIcon } from "./src/PhoneIcon";
+export { EnvelopeIcon } from "./src/EnvelopeIcon";
+export { GlobeIcon } from "./src/GlobeIcon";
+export { LocationIcon } from "./src/LocationIcon";
+export { CloseIcon } from "./src/CloseIcon";
+export { FilterIcon } from "./src/FilterIcon";

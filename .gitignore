@@ -1,0 +1,9 @@
+node_modules
+.next
+out
+*.log
+coverage
+.idea
+.vscode
+.DS_Store
+
