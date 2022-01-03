@@ -18,11 +18,11 @@ import React from "react";
 
 import useStore from "../../store/store";
 
-function CartDrawer() {
+export const CartDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
-  const cartItems = useStore(state => state.cart.items);
-  const total = useStore(state => state.cart.total);
+  const cartItems = useStore(state => state["cart"]["items"]);
+  const total = useStore(state => state["cart"]["total"]);
   const handleDecrementQty = useStore(state => state.handleDecrementQty);
   const handleIncrementQty = useStore(state => state.handleIncrementQty);
   const handleDeleteItem = useStore(state => state.handleDeleteItem);
@@ -76,7 +76,7 @@ function CartDrawer() {
                       <i
                         className="fa fa-trash"
                         aria-hidden="true"
-                        style={{ fontSize: "24px", color: "#EFEFD0" }}
+                        style={{ fontSize: "24px", color: "gray.300" }}
                       ></i>
                     </Text>
                   </HStack>
@@ -89,7 +89,7 @@ function CartDrawer() {
                   >
                     <HStack
                       width="100px"
-                      border="1px solid #efefef"
+                      border="1px solid gray.300"
                       justifyContent="space-between"
                       borderRadius="10px"
                       overflow="hidden"
@@ -105,7 +105,7 @@ function CartDrawer() {
                         border="0"
                         outline="none"
                         _hover={{
-                          borderColor: "#fff",
+                          borderColor: "gray.100",
                         }}
                       >
                         <i className="fa fa-plus"></i>
@@ -168,6 +168,4 @@ function CartDrawer() {
       </Drawer>
     </>
   );
-}
-
-export default CartDrawer;
+};

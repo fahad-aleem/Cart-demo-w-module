@@ -1,16 +1,16 @@
 import { SimpleGrid, GridItem, Image, VStack } from "@chakra-ui/react";
-import { ProductImagesTypes } from "@gold/data-products";
 import React, { useState } from "react";
 
+import { ProductImagesTypes } from "@goldn/data-product";
+
 export const ProductGallery = (props: ProductImagesTypes[]) => {
-  console.log(props);
-  const [currentImage, setCurrentImage] = useState(props.images[0].url);
+  const [currentImage, setCurrentImage] = useState(props["images"][0].url);
 
   return (
     <SimpleGrid columns={12} spacing={3} height="500px">
       <GridItem colSpan={2} overflow="auto">
         <VStack spacing={3}>
-          {props.images.map(image => {
+          {props["images"].map(image => {
             return (
               <Image
                 key={image.id}

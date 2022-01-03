@@ -1,17 +1,30 @@
 import { Box, Button } from "@chakra-ui/react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
-import { useState, useContext } from "react";
+import { useState } from "react";
 
-import { CheckoutContext } from "../../context/context";
 import useStore from "../../store/store";
 
-const CardPaymentForm = () => {
+interface CheckoutDetailsValidation {
+  checkoutDetails: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    addressLine1: string;
+    addressLine2: string;
+    city: string;
+    state: string;
+    postalCode: string;
+    country: string;
+  };
+}
+
+const CardPaymentForm = ({ checkoutDetails }: CheckoutDetailsValidation) => {
   const [success, setSuccess] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
-  const { checkoutDetails } = useContext(CheckoutContext);
-  const totalAmount = useStore(state => state.cart.total);
+  const totalAmount = useStore(state => state["cart"]["total"]);
 
   const handleSubmit = async event => {
     event.preventDefault();

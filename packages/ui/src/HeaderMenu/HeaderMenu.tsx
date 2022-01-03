@@ -7,7 +7,8 @@ import {
   PopoverContent,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import CartDrawer from "@goldn/marketing-app/src/components/CartDrawer/Drawer";
+
+import { CartDrawer } from "../Cart";
 
 export const HeaderMenu = () => {
   return (

@@ -7,15 +7,27 @@ import {
   Input,
   FormLabel,
 } from "@chakra-ui/react";
-import { useContext } from "react";
 
-import { CheckoutContext } from "../../context/context";
+interface CheckoutDetailsValidation {
+  checkoutDetails: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    addressLine1: string;
+    addressLine2: string;
+    city: string;
+    state: string;
+    postalCode: string;
+    country: string;
+  };
+  handleSetCheckoutDetails: any;
+}
 
-const ShippingForm = () => {
-  const { checkoutDetails, handleSetCheckoutDetails } = useContext(
-    CheckoutContext
-  );
-
+export const ShippingForm = ({
+  checkoutDetails,
+  handleSetCheckoutDetails,
+}: CheckoutDetailsValidation) => {
   return (
     <Box my={2}>
       <Heading as="h4" fontSize="lg">

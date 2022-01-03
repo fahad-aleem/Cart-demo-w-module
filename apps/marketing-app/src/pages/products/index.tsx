@@ -2,7 +2,8 @@ import { Container, Flex, Text, Spinner, Box, Button } from "@chakra-ui/react";
 import request from "graphql-request";
 import { useEffect, useState } from "react";
 
-import {ProductHeader, ProductCard} from "@goldn/ui";
+import { ProductHeader, ProductCard } from "@goldn/ui";
+
 import { ProductsQuery } from "../../queries/products/products";
 
 const Product = () => {
@@ -13,11 +14,11 @@ const Product = () => {
   const [count, setCount] = useState(10);
   const getProducts = async () => {
     setLoading(true);
-    const data = await request("https://demo.saleor.io/graphql/", ProductsQuery.getProducts, {
+    const data = await request(endPoint, ProductsQuery.getProducts, {
       noOfProducts: count,
     });
 
-    console.log(data)
+    console.log(data);
     setProducts(data.products.edges);
     setLoading(false);
   };

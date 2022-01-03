@@ -11,7 +11,7 @@ interface ItemCardProps {
   };
 }
 
-const ItemCard = ({ item }: ItemCardProps) => {
+export const ItemCard = ({ item }: ItemCardProps) => {
   return (
     <Box>
       <Box mb="2">
@@ -52,9 +52,9 @@ const ItemCard = ({ item }: ItemCardProps) => {
   );
 };
 
-const CartSummaryCard = () => {
-  const cartItems = useStore(state => state.cart.items);
-  const totalAmount = useStore(state => state.cart.total);
+export const CartSummaryCard = () => {
+  const cartItems = useStore(state => state["cart"]["items"]);
+  const totalAmount = useStore(state => state["cart"]["total"]);
 
   return (
     <Box my={2}>
@@ -80,5 +80,3 @@ const CartSummaryCard = () => {
     </Box>
   );
 };
-
-export default CartSummaryCard;
